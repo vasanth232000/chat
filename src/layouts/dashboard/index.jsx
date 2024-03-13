@@ -19,6 +19,11 @@ import useSettings from "../../hooks/useSettings";
 const DashboardLayout = () => {
   const theme = useTheme();
   const [selected, setSelected] = useState(0);
+  const { onToggleMode,themeMode } = useSettings();
+  const [checked,setChecked] = useState(()=>{
+    const themes = themeMode === "light" ? false : true;
+    return themes;
+  });
   const AntSwitch = styled(Switch)(({ theme }) => ({
     width: 40,
     height: 20,
@@ -63,7 +68,6 @@ const DashboardLayout = () => {
       boxSizing: "border-box",
     },
   }));
-  const { onToggleMode } = useSettings();
   return (
     <>
       <Box
@@ -146,10 +150,11 @@ const DashboardLayout = () => {
           </Stack>
           <Stack alignItems={"center"} p={4} spacing={3}>
             <AntSwitch
+            checked={checked}
               onChange={() => {
                 onToggleMode();
+                setChecked(!checked)
               }}
-              defaultChecked
             />
             <Avatar src={faker.image.avatar()} />
           </Stack>
