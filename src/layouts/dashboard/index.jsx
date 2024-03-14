@@ -19,8 +19,8 @@ import useSettings from "../../hooks/useSettings";
 const DashboardLayout = () => {
   const theme = useTheme();
   const [selected, setSelected] = useState(0);
-  const { onToggleMode,themeMode } = useSettings();
-  const [checked,setChecked] = useState(()=>{
+  const { onToggleMode, themeMode } = useSettings();
+  const [checked, setChecked] = useState(() => {
     const themes = themeMode === "light" ? false : true;
     return themes;
   });
@@ -69,7 +69,7 @@ const DashboardLayout = () => {
     },
   }));
   return (
-    <>
+    <Stack direction={"row"}>
       <Box
         p={2}
         sx={{
@@ -116,7 +116,12 @@ const DashboardLayout = () => {
                   </Box>
                 ) : (
                   <IconButton
-                    sx={{ color: theme.palette.mode === "light" ? theme.palette.common.black : theme.palette.text.primary }}
+                    sx={{
+                      color:
+                        theme.palette.mode === "light"
+                          ? theme.palette.common.black
+                          : theme.palette.text.primary,
+                    }}
                     onClick={() => setSelected(el.index)}
                   >
                     {el.icon}
@@ -141,7 +146,12 @@ const DashboardLayout = () => {
               ) : (
                 <IconButton
                   onClick={() => setSelected(3)}
-                  sx={{ color: theme.palette.mode === "light" ? theme.palette.common.black : theme.palette.text.primary }}
+                  sx={{
+                    color:
+                      theme.palette.mode === "light"
+                        ? theme.palette.common.black
+                        : theme.palette.text.primary,
+                  }}
                 >
                   <Gear />
                 </IconButton>
@@ -150,10 +160,10 @@ const DashboardLayout = () => {
           </Stack>
           <Stack alignItems={"center"} p={4} spacing={3}>
             <AntSwitch
-            checked={checked}
+              checked={checked}
               onChange={() => {
                 onToggleMode();
-                setChecked(!checked)
+                setChecked(!checked);
               }}
             />
             <Avatar src={faker.image.avatar()} />
@@ -161,7 +171,7 @@ const DashboardLayout = () => {
         </Stack>
       </Box>
       <Outlet />
-    </>
+    </Stack>
   );
 };
 
