@@ -116,6 +116,7 @@ const DashboardLayout = () => {
                   </Box>
                 ) : (
                   <IconButton
+                  key={el.index}
                     sx={{
                       color:
                         theme.palette.mode === "light"

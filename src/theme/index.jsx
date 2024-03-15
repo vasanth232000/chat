@@ -5,7 +5,7 @@ import { CssBaseline } from "@mui/material";
 import {
   createTheme,
   ThemeProvider as MUIThemeProvider,
-  StyledEngineProvider,
+  StyledEngineProvider
 } from "@mui/material/styles";
 // hooks
 import useSettings from "../hooks/useSettings.jsx";
@@ -41,6 +41,9 @@ export default function ThemeProvider({ children }) {
   );
 
   const theme = createTheme(themeOptions);
+
+
+
 
   theme.components = componentsOverride(theme);
 
