@@ -44,7 +44,7 @@ export default function CssBaseline() {
           maxWidth: "100%",
         },
         "&::-webkit-scrollbar": {
-          width: "6px",
+          width: "2px",
           backgroundColor: isLight ? "#F5F5F5" : "#2b2b2b",
         },
 
