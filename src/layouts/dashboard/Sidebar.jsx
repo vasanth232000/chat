@@ -3,6 +3,10 @@ import {
   Box,
   Divider,
   IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
   Stack,
   Switch,
   styled,
@@ -10,7 +14,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import Logo from "../../assets/images/logo.ico";
-import { Nav_Buttons } from "../../data";
+import { Nav_Buttons, Profile_Menu } from "../../data";
 import { Gear } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 import useSettings from "../../hooks/useSettings";
@@ -24,6 +28,14 @@ const Sidebar = () => {
     const themes = themeMode === "light" ? false : true;
     return themes;
   });
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = anchorEl;
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <Box
@@ -123,7 +135,47 @@ const Sidebar = () => {
               setChecked(!checked);
             }}
           />
-          <Avatar src={faker.image.avatar()} />
+          <Avatar
+            src={faker.image.avatar()}
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+            sx={{cursor:"pointer"}}
+          />
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <Stack px={1}>
+              {Profile_Menu.map((el) => {
+                return (
+                  <MenuItem>
+                    <ListItemIcon sx={{ margin: 0, fontSize: 20 }}>
+                      {el.icon}
+                    </ListItemIcon>
+                    <ListItemText sx={{ fontSize: "14px", fontWeight: 500 }}>
+                      {el.title}
+                    </ListItemText>
+                  </MenuItem>
+                );
+              })}
+            </Stack>
+          </Menu>
         </Stack>
       </Stack>
     </Box>

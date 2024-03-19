@@ -1,4 +1,4 @@
-import { ChatCircleDots, Phone, Users } from "phosphor-react";
+import { ChatCircleDots, Gear, Phone, SignOut, User, Users } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 
 
@@ -170,4 +170,41 @@ import { faker } from "@faker-js/faker";
     },
   ];
 
-  export {Nav_Buttons,ChatList,Chat_History}
+
+  const Message_options = [
+    {
+      title: "Reply",
+    },
+    {
+      title: "React to message",
+    },
+    {
+      title: "Forward message",
+    },
+    {
+      title: "Star message",
+    },
+    {
+      title: "Report",
+    },
+    {
+      title: "Delete Message",
+    },
+  ];
+
+  const Profile_Menu = [
+    {
+      title: "Profile",
+      icon: <User />,
+    },
+    {
+      title: "Settings",
+      icon: <Gear />,
+    },
+    {
+      title: "Sign Out",
+      icon: <SignOut />,
+    },
+  ];
+
+  export {Nav_Buttons,ChatList,Chat_History,Message_options,Profile_Menu}
