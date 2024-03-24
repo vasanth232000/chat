@@ -279,7 +279,7 @@ const MenuItems = () => {
         aria-controls={open ? "account-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        style={{cursor:"pointer"}}
+        style={{ cursor: "pointer" }}
       />
       <Menu
         anchorEl={anchorEl}
@@ -317,8 +317,16 @@ const MenuItems = () => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <Stack spacing={1} p={1}>
-          {Message_options.map((el) => {
-            return <MenuItem onClick={handleClose} sx={{fontSize:"14px",fontWeight:500}}>{el.title}</MenuItem>;
+          {Message_options.map((el, index) => {
+            return (
+              <MenuItem
+                key={index}
+                onClick={handleClose}
+                sx={{ fontSize: "14px", fontWeight: 500 }}
+              >
+                {el.title}
+              </MenuItem>
+            );
           })}
         </Stack>
       </Menu>

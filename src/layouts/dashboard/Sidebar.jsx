@@ -142,7 +142,7 @@ const Sidebar = () => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
-            sx={{cursor:"pointer"}}
+            sx={{ cursor: "pointer" }}
           />
           <Menu
             id="basic-menu"
@@ -162,9 +162,9 @@ const Sidebar = () => {
             }}
           >
             <Stack px={1}>
-              {Profile_Menu.map((el) => {
+              {Profile_Menu.map((el, index) => {
                 return (
-                  <MenuItem>
+                  <MenuItem key={index}>
                     <ListItemIcon sx={{ margin: 0, fontSize: 20 }}>
                       {el.icon}
                     </ListItemIcon>
